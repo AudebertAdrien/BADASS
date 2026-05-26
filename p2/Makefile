@@ -18,20 +18,16 @@ RESET = \033[0m
 # Main rules
 # ==========================================
 
-# Default rule: build everything
 all: build
 
-# The 'build' rule calls all sub-rules
 build: build_host build_static build_multicast
 	@echo "$(GREEN)=== All P2 images are ready! ===$(RESET)"
 
 # --- Dedicated commands for the evaluation ---
 
-# 'make static': Prepares only the first part
 static: build_host build_static
 	@echo "$(BLUE)=== Ready for the STATIC presentation ===$(RESET)"
 
-# 'make multicast': Prepares the second part
 multicast: build_host build_multicast
 	@echo "$(BLUE)=== Ready for the MULTICAST presentation ===$(RESET)"
 
@@ -64,5 +60,4 @@ clean:
 		$(R2_MULT_IMG):latest 2>/dev/null || true
 	@echo "$(GREEN)=== Cleanup finished ===$(RESET)"
 
-# Declaration of non-file targets
 .PHONY: all build static multicast build_host build_static build_multicast clean
