@@ -17,6 +17,8 @@ RUN touch /etc/frr/vtysh.conf && \
     chown frr:frrvty /etc/frr/vtysh.conf && \
     chmod 660 /etc/frr/vtysh.conf
 
+COPY configs/ /etc/frr/templates/
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
